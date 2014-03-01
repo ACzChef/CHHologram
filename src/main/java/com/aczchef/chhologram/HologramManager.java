@@ -40,6 +40,7 @@ public class HologramManager {
     public static void storeHolograms() {
 	String JSONHolograms = JSONValue.toJSONString(holograms);
 	String JSONNames = JSONValue.toJSONString(names);
+	
 	//check database state
 	//check config settings
 	//store

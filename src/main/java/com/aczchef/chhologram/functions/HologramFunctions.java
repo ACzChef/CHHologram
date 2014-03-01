@@ -6,9 +6,10 @@
 
 package com.aczchef.chhologram.functions;
 
-import android.R;
+import com.aczchef.chhologram.Hologram;
 import com.laytonsmith.PureUtilities.Version;
 import com.laytonsmith.abstraction.MCLocation;
+import com.laytonsmith.annotations.api;
 import com.laytonsmith.core.CHVersion;
 import com.laytonsmith.core.ObjectGenerator;
 import com.laytonsmith.core.constructs.CArray;
@@ -21,13 +22,15 @@ import com.laytonsmith.core.environments.Environment;
 import com.laytonsmith.core.exceptions.ConfigRuntimeException;
 import com.laytonsmith.core.functions.AbstractFunction;
 import com.laytonsmith.core.functions.Exceptions;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
  * @author cgallarno
  */
-public class Hologram {
+public class HologramFunctions {
+    @api
     public static class spawn_hologram extends AbstractFunction {
 
 	public Exceptions.ExceptionType[] thrown() {
@@ -58,7 +61,9 @@ public class Hologram {
 		location = ObjectGenerator.GetGenerator().location((CArray) args[1], null, t);
 		alignment = ((CDouble) args[2]).getDouble();
 	    }
-	    List<Construct> lines = CLines.asList();
+	    
+	    List<String> lines = (ArrayList<String>) Construct.GetPOJO(CLines);
+	    new Hologram(lines.toArray(new String[0]), location, alignment);
 	    return new CVoid(t);
 	}
 
