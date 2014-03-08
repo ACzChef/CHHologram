@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.aczchef.chhologram;
 
 import com.aczchef.chhologram.exceptions.HologramException;
@@ -14,8 +8,6 @@ import com.laytonsmith.abstraction.Velocity;
 import com.laytonsmith.abstraction.entities.MCHorse;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.bukkit.entity.Horse;
 import org.bukkit.entity.WitherSkull;
 
@@ -44,7 +36,7 @@ public class Hologram {
 	this.alignment = alignment;
 	this.entities = new ArrayList<MCEntity[]>();
 	location.add(0, 57, 0);
-	for (int i = lines.length; i >= 0; i++) {
+	for (int i = lines.length - 1; i >= 0; i--) {
 	    String line = lines[i];
 	    MCFireball witherSkull = (MCFireball) location.getWorld().spawn(location, WitherSkull.class);
 	    MCHorse horse = (MCHorse) location.getWorld().spawn(location, Horse.class);
