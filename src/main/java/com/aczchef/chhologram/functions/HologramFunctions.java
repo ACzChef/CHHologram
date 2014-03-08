@@ -1,12 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.aczchef.chhologram.functions;
 
 import com.aczchef.chhologram.Hologram;
+import com.aczchef.chhologram.HologramVersion;
 import com.laytonsmith.PureUtilities.Version;
 import com.laytonsmith.abstraction.MCLocation;
 import com.laytonsmith.annotations.api;
@@ -80,7 +75,43 @@ public class HologramFunctions {
 	}
 
 	public Version since() {
-	    return CHVersion.V3_3_1;
+	    return HologramVersion.V0_0_1;
+	}
+    }
+    
+    @api
+    public static class remove_hologram extends AbstractFunction {
+
+	public Exceptions.ExceptionType[] thrown() {
+	    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+
+	public boolean isRestricted() {
+	    return true;
+	}
+
+	public Boolean runAsync() {
+	    return false;
+	}
+
+	public Construct exec(Target t, Environment environment, Construct... args) throws ConfigRuntimeException {
+	    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+
+	public String getName() {
+	    return "remove_hologram";
+	}
+
+	public Integer[] numArgs() {
+	    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+
+	public String docs() {
+	    return "";
+	}
+
+	public Version since() {
+	    return HologramVersion.V0_0_1;
 	}
 	
     }
