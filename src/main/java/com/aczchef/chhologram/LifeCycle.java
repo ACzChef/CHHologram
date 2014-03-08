@@ -25,7 +25,7 @@ import java.util.logging.Logger;
 public class LifeCycle extends AbstractExtension {
 
     public Version getVersion() {
-	return new SimpleVersion(0, 1, 0);
+	return HologramVersion.V0_0_1;
     }
     @Override
     public void onStartup() {
