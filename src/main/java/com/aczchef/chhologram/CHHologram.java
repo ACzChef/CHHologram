@@ -20,13 +20,14 @@ import java.net.URISyntaxException;
  */
 public class CHHologram {
     private PersistenceNetwork persistenNetwork;
-    private HologramConfig configOptions;
+    private HologramConfig hologramConfig;
     // Reserved
     private HologramManager holograManager;
     private static CHHologram defaultInstance;
 
-    public CHHologram(PersistenceNetwork persistenceNetwork, HologramConfig config) {
-	
+    public CHHologram(PersistenceNetwork persistenceNetwork, HologramConfig hologramConfig) {
+	this.persistenNetwork = persistenceNetwork;
+	this.hologramConfig = hologramConfig;
     }
 
     
@@ -67,7 +68,7 @@ public class CHHologram {
     }
     
     public HologramConfig getConfig() {
-	return this.configOptions;
+	return this.hologramConfig;
     }
     
     public PersistenceNetwork getPersistenceNetwork() {
