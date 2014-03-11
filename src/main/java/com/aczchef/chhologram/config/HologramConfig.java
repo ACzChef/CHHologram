@@ -12,9 +12,9 @@ import java.util.List;
  * @author cgallarno
  */
 public class HologramConfig {
-    private static Preferences prefs;
-    
-    public static void init(File f) throws IOException {
+    private Preferences prefs;
+
+    public HologramConfig(File f) throws IOException {
 	List<Preferences.Preference> def = new ArrayList<Preferences.Preference>();
 	def.add(new Preferences.Preference("Unique-storage", "false", Preferences.Type.BOOLEAN, "Whether to use 'Server-name' when storing holograms or not. RECOMENDED IF YOU SHARE A DATABASE WITH MULTIPLE SERVERS."));
 	def.add(new Preferences.Preference("Server-name", Static.getServer().getServerName(), Preferences.Type.STRING, "The name to make theese holograms stored seperately to this server."));
@@ -22,7 +22,7 @@ public class HologramConfig {
 	prefs.init(f);
     }
     
-    public static String getUniqueName() {
+    public String getUniqueName() {
 	return (String) prefs.getPreference("Server-name");
     }
     
