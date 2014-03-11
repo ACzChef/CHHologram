@@ -1,4 +1,4 @@
-package com.aczchef.chhologram;
+package com.aczchef.chhologram.extension;
 
 import com.aczchef.chhologram.config.HologramConfig;
 import com.laytonsmith.PureUtilities.SimpleVersion;

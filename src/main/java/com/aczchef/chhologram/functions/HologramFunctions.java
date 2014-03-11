@@ -1,7 +1,8 @@
 package com.aczchef.chhologram.functions;
 
-import com.aczchef.chhologram.Hologram;
-import com.aczchef.chhologram.HologramVersion;
+import com.aczchef.chhologram.hologram.Hologram;
+import com.aczchef.chhologram.hologram.HologramManager;
+import com.aczchef.chhologram.extension.HologramVersion;
 import com.laytonsmith.PureUtilities.Version;
 import com.laytonsmith.abstraction.MCLocation;
 import com.laytonsmith.annotations.api;
@@ -9,6 +10,8 @@ import com.laytonsmith.core.CHVersion;
 import com.laytonsmith.core.ObjectGenerator;
 import com.laytonsmith.core.constructs.CArray;
 import com.laytonsmith.core.constructs.CDouble;
+import com.laytonsmith.core.constructs.CInt;
+import com.laytonsmith.core.constructs.CString;
 import com.laytonsmith.core.constructs.CVoid;
 import com.laytonsmith.core.constructs.Construct;
 import com.laytonsmith.core.constructs.Target;
@@ -95,7 +98,12 @@ public class HologramFunctions {
 	}
 
 	public Construct exec(Target t, Environment environment, Construct... args) throws ConfigRuntimeException {
-	    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	    if (args[0] instanceof CString) {
+		HologramManager.removeHologram(args[0].val());
+	    } else if(args[0] instanceof CInt) {
+		HologramManager.removeHologram( ((CInt) args[0]).getInt());
+	    }
+	    return new CVoid(t);
 	}
 
 	public String getName() {
@@ -103,7 +111,7 @@ public class HologramFunctions {
 	}
 
 	public Integer[] numArgs() {
-	    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	    return new Integer[] {1};
 	}
 
 	public String docs() {

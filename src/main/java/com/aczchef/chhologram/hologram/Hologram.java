@@ -1,4 +1,4 @@
-package com.aczchef.chhologram;
+package com.aczchef.chhologram.hologram;
 
 import com.aczchef.chhologram.exceptions.HologramException;
 import com.laytonsmith.abstraction.MCEntity;
@@ -7,6 +7,7 @@ import com.laytonsmith.abstraction.MCLocation;
 import com.laytonsmith.abstraction.Velocity;
 import com.laytonsmith.abstraction.entities.MCHorse;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import org.bukkit.entity.Horse;
 import org.bukkit.entity.WitherSkull;
@@ -16,12 +17,12 @@ import org.bukkit.entity.WitherSkull;
  * @author cgallarno
  */
 public class Hologram {
-    private static int id = 0;
+    private static long id = 0;
     private String[] lines;
     private MCLocation location;
     private List<MCEntity[]> entities;
     private double alignment;
-    private int uid;
+    private long uid;
     private String name;
 
     /**
@@ -58,7 +59,7 @@ public class Hologram {
 	this.uid = id++;
 	this.name = name;
 	try {
-	    HologramManager.addHologram(this);
+	    HologramManager.addExistingHologram(this);
 	} catch (HologramException ex) {
 	    System.out.println("An error occured creating the hologram. Any created entites were removed.");
 	    System.out.println(ex);
@@ -82,7 +83,7 @@ public class Hologram {
 	this(lines, location, 0.3);
     }
 
-    public int getUid() {
+    public long getUid() {
 	return uid;
     }
 
@@ -92,5 +93,13 @@ public class Hologram {
     
     public void setLines(String[] lines) {
 	
+    }
+    
+    public void remove() {
+	for (Iterator<MCEntity[]> it = entities.iterator(); it.hasNext();) {
+	    MCEntity[] entityPair = it.next();
+	    entityPair[0].remove();
+	    entityPair[1].remove();
+	}
     }
 }
